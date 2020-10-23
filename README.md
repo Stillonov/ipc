@@ -1,2 +1,1 @@
-# instapost-compare
-Created with CodeSandbox
+# Instagram. Post Comparing
