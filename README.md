@@ -1,2 +1,2 @@
-# instagram-post-comparing
+# instapost-compare
 Created with CodeSandbox
