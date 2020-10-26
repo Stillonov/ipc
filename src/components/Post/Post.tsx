@@ -52,10 +52,10 @@ function Post() {
                 {post && (
                     <div className={styles.PostMeta}>
                         <p>
-                            размеры фото: {post.thumbnail_width} x {post.thumbnail_height}
+                            size: {post.thumbnail_width} x {post.thumbnail_height}
                         </p>
                         <p>
-                            соотношение сторон фото: {(post.thumbnail_width / post.thumbnail_height).toFixed(3)}
+                            ratio: {(post.thumbnail_width / post.thumbnail_height).toFixed(3)}
                         </p>
                     </div>
                 )}
