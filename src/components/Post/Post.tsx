@@ -8,27 +8,27 @@ interface IThumbnail {
     url: string,
 }
 
+interface IPostInfo {
+    thumbnail_width: number,
+    thumbnail_height: number,
+    thumbnail_url: string,
+}
+
+const getPost = async (postUrl: string) => {
+    const response = await fetch(
+        `https://graph.facebook.com/v8.0/instagram_oembed?url=${postUrl}&access_token=${process.env.REACT_APP_FB_ID}|${process.env.REACT_APP_FB_ACCESS_TOKEN}`
+    );
+
+    if (response.ok) {
+        return await response.json();
+    } else {
+        console.log(`Ошибка HTTP: ${response.status}`);
+    }
+};
+
 const Post: React.FC = () => {
     const [url, setUrl] = useState('');
     const [thumbnail, setThumbnail] = useState<IThumbnail | null>(null);
-
-    const getPost = useDebouncedFn(async (postUrl: string) => {
-        const response = await fetch(
-            `https://graph.facebook.com/v8.0/instagram_oembed?url=${postUrl}&access_token=${process.env.REACT_APP_FB_ID}|${process.env.REACT_APP_FB_ACCESS_TOKEN}`
-        );
-
-        if (response.ok) {
-            const postInfo = await response.json();
-
-            setThumbnail({
-                width: postInfo.thumbnail_width,
-                height: postInfo.thumbnail_height,
-                url: postInfo.thumbnail_url,
-            });
-        } else {
-            console.log(`Ошибка HTTP: ${response.status}`);
-        }
-    }, 2000);
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setUrl(event.target.value);
@@ -40,7 +40,13 @@ const Post: React.FC = () => {
                 return;
             }
 
-            getPost(url);
+            getPost(url).then((postInfo:IPostInfo) => {
+                setThumbnail({
+                    width: postInfo.thumbnail_width,
+                    height: postInfo.thumbnail_height,
+                    url: postInfo.thumbnail_url,
+                });
+            });
         },
         [url]
     );
