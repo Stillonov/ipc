@@ -8,9 +8,8 @@ function Post() {
     const [post, setPost] = useState({});
 
     const getPost = async (postUrl: string) => {
-        const access_token = '722246511978459|87a7cd3f13b5d943b63456262f0074e3';
         const response = await fetch(
-            `https://graph.facebook.com/v8.0/instagram_oembed?url=${postUrl}&access_token=${access_token}`
+            `https://graph.facebook.com/v8.0/instagram_oembed?url=${postUrl}&access_token=${process.env.FB_APP_ID}|${process.env.FB_APP_ACCESS_TOKEN}`
         );
 
         if (response.ok) {
@@ -52,17 +51,17 @@ function Post() {
                 {post && (
                     <div className={styles.PostMeta}>
                         <p>
-                            size: {post.thumbnail_width} x {post.thumbnail_height}
+
                         </p>
                         <p>
-                            ratio: {(post.thumbnail_width / post.thumbnail_height).toFixed(3)}
+
                         </p>
                     </div>
                 )}
             </div>
 
             {post && (
-                <img alt="" className={styles.PostThumbnail} src={post.thumbnail_url} />
+                <img alt="" className={styles.PostThumbnail} />
             )}
         </div>
     );
