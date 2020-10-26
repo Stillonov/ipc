@@ -18,9 +18,6 @@ jobs:
         run: |
           npm install
           npm run build
-        env:
-          FB_APP_ID: ${{ secrets.FB_APP_ID }}
-          FB_APP_ACCESS_TOKEN: ${{ secrets.FB_APP_ACCESS_TOKEN }}
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@3.7.1
