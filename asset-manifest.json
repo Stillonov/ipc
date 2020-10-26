@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/instagram-post-comparing/static/css/main.ab7136cd.chunk.css",
-    "main.js": "/instagram-post-comparing/static/js/main.1f6db4ed.chunk.js",
-    "main.js.map": "/instagram-post-comparing/static/js/main.1f6db4ed.chunk.js.map",
-    "runtime-main.js": "/instagram-post-comparing/static/js/runtime-main.b7d8c41e.js",
-    "runtime-main.js.map": "/instagram-post-comparing/static/js/runtime-main.b7d8c41e.js.map",
-    "static/js/2.4fd6f1b9.chunk.js": "/instagram-post-comparing/static/js/2.4fd6f1b9.chunk.js",
-    "static/js/2.4fd6f1b9.chunk.js.map": "/instagram-post-comparing/static/js/2.4fd6f1b9.chunk.js.map",
-    "static/js/3.1078df1f.chunk.js": "/instagram-post-comparing/static/js/3.1078df1f.chunk.js",
-    "static/js/3.1078df1f.chunk.js.map": "/instagram-post-comparing/static/js/3.1078df1f.chunk.js.map",
-    "index.html": "/instagram-post-comparing/index.html",
-    "static/css/main.ab7136cd.chunk.css.map": "/instagram-post-comparing/static/css/main.ab7136cd.chunk.css.map",
-    "static/js/2.4fd6f1b9.chunk.js.LICENSE.txt": "/instagram-post-comparing/static/js/2.4fd6f1b9.chunk.js.LICENSE.txt",
-    "static/media/logo.103b5fa1.svg": "/instagram-post-comparing/static/media/logo.103b5fa1.svg"
+    "main.css": "/instagram-posts-comparing/static/css/main.ab7136cd.chunk.css",
+    "main.js": "/instagram-posts-comparing/static/js/main.04675520.chunk.js",
+    "main.js.map": "/instagram-posts-comparing/static/js/main.04675520.chunk.js.map",
+    "runtime-main.js": "/instagram-posts-comparing/static/js/runtime-main.dad1ea9a.js",
+    "runtime-main.js.map": "/instagram-posts-comparing/static/js/runtime-main.dad1ea9a.js.map",
+    "static/js/2.c7cd0d33.chunk.js": "/instagram-posts-comparing/static/js/2.c7cd0d33.chunk.js",
+    "static/js/2.c7cd0d33.chunk.js.map": "/instagram-posts-comparing/static/js/2.c7cd0d33.chunk.js.map",
+    "static/js/3.3530327c.chunk.js": "/instagram-posts-comparing/static/js/3.3530327c.chunk.js",
+    "static/js/3.3530327c.chunk.js.map": "/instagram-posts-comparing/static/js/3.3530327c.chunk.js.map",
+    "index.html": "/instagram-posts-comparing/index.html",
+    "static/css/main.ab7136cd.chunk.css.map": "/instagram-posts-comparing/static/css/main.ab7136cd.chunk.css.map",
+    "static/js/2.c7cd0d33.chunk.js.LICENSE.txt": "/instagram-posts-comparing/static/js/2.c7cd0d33.chunk.js.LICENSE.txt",
+    "static/media/logo.103b5fa1.svg": "/instagram-posts-comparing/static/media/logo.103b5fa1.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.b7d8c41e.js",
-    "static/js/2.4fd6f1b9.chunk.js",
+    "static/js/runtime-main.dad1ea9a.js",
+    "static/js/2.c7cd0d33.chunk.js",
     "static/css/main.ab7136cd.chunk.css",
-    "static/js/main.1f6db4ed.chunk.js"
+    "static/js/main.04675520.chunk.js"
   ]
 }
