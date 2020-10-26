@@ -9,7 +9,7 @@ function Post() {
 
     const getPost = async (postUrl: string) => {
         const response = await fetch(
-            `https://graph.facebook.com/v8.0/instagram_oembed?url=${postUrl}&access_token=${process.env.FB_APP_ID}|${process.env.FB_APP_ACCESS_TOKEN}`
+            `https://graph.facebook.com/v8.0/instagram_oembed?url=${postUrl}&access_token=${process.env.REACT_APP_FB_ID}|${process.env.REACT_APP_FB_ACCESS_TOKEN}`
         );
 
         if (response.ok) {
