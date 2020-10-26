@@ -1,0 +1,49 @@
+.Post {
+    display: flex;
+    flex-direction: column;
+    flex: 0 1 auto;
+    min-width: 326px;
+    margin: 0 0 20px;
+}
+
+@media (min-width: 1101px) {
+    .Post {
+        flex: 0 1 326px;
+        margin-right: 16px;
+        margin-left: 16px;
+    }
+}
+
+.PostHeader {
+    margin: 0;
+    text-align: left;
+}
+
+.PostTextField {
+    width: 100%;
+    height: 30px;
+    margin: 0;
+    padding: 0 10px;
+    border: 1px solid rgb(219, 219, 219);
+    border-radius: 3px;
+    outline: none;
+    line-height: 30px;
+}
+
+.PostTextFieldError {
+    border-color: red;
+}
+
+.PostMeta {
+    margin: 16px 0 0;
+    font-size: 12px;
+}
+
+.PostMeta p + p {
+    margin-top: 10px;
+}
+
+.PostThumbnail {
+    width: 100%;
+    margin: 24px 0;
+}
