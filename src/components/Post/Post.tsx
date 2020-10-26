@@ -1,10 +1,16 @@
-import React, { useState, useEffect, SyntheticEvent } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDebouncedFn } from 'beautiful-react-hooks';
 import styles from './Post.module.css';
 
-function Post() {
+interface IThumbnail {
+    width: number,
+    height: number,
+    url: string,
+}
+
+const Post: React.FC = () => {
     const [url, setUrl] = useState('');
-    const [post, setPost] = useState({});
+    const [thumbnail, setThumbnail] = useState<IThumbnail | null>(null);
 
     const getPost = useDebouncedFn(async (postUrl: string) => {
         const response = await fetch(
@@ -14,7 +20,11 @@ function Post() {
         if (response.ok) {
             const postInfo = await response.json();
 
-            setPost(postInfo);
+            setThumbnail({
+                width: postInfo.thumbnail_width,
+                height: postInfo.thumbnail_height,
+                url: postInfo.thumbnail_url,
+            });
         } else {
             console.log(`Ошибка HTTP: ${response.status}`);
         }
@@ -35,6 +45,8 @@ function Post() {
         [url]
     );
 
+    console.log(thumbnail);
+
     return (
         <div className={styles.Post}>
             <div className={styles.PostHeader}>
@@ -47,21 +59,28 @@ function Post() {
                     onBlur={handleChange}
                 />
 
-                {post && (
-                    <div className={styles.PostMeta}>
-                        <p>
-
-                        </p>
-                        <p>
-
-                        </p>
-                    </div>
-                )}
+                {
+                    thumbnail &&
+                    thumbnail.width &&
+                    thumbnail.height && (
+                        <div className={styles.PostMeta}>
+                            <p>
+                                размеры фото: {thumbnail.width} x {thumbnail.height}
+                            </p>
+                            <p>
+                                соотношение сторон фото: {(thumbnail.width / thumbnail.height).toFixed(3)}
+                            </p>
+                        </div>
+                    )
+                }
             </div>
 
-            {post && (
-                <img alt="" className={styles.PostThumbnail} />
-            )}
+            {
+                thumbnail &&
+                thumbnail.url && (
+                    <img alt="" className={styles.PostThumbnail} src={thumbnail.url} />
+                )
+            }
         </div>
     );
 };
