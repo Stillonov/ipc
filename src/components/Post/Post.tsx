@@ -1,13 +1,12 @@
 import React, { useState, useEffect, SyntheticEvent } from 'react';
+import { useDebouncedFn } from 'beautiful-react-hooks';
 import styles from './Post.module.css';
-// import { useThrottledFn } from 'beautiful-react-hooks';
-// import InstagramEmbed from 'react-instagram-embed';
 
 function Post() {
     const [url, setUrl] = useState('');
     const [post, setPost] = useState({});
 
-    const getPost = async (postUrl: string) => {
+    const getPost = useDebouncedFn(async (postUrl: string) => {
         const response = await fetch(
             `https://graph.facebook.com/v8.0/instagram_oembed?url=${postUrl}&access_token=${process.env.REACT_APP_FB_ID}|${process.env.REACT_APP_FB_ACCESS_TOKEN}`
         );
@@ -19,7 +18,7 @@ function Post() {
         } else {
             console.log(`Ошибка HTTP: ${response.status}`);
         }
-    };
+    }, 2000);
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setUrl(event.target.value);
