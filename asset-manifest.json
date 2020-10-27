@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/instagram-posts-comparing/static/css/main.803282a8.chunk.css",
+    "main.css": "/instagram-posts-comparing/static/css/main.53881076.chunk.css",
     "main.js": "/instagram-posts-comparing/static/js/main.b02aba95.chunk.js",
     "main.js.map": "/instagram-posts-comparing/static/js/main.b02aba95.chunk.js.map",
     "runtime-main.js": "/instagram-posts-comparing/static/js/runtime-main.13ff0f2b.js",
@@ -8,13 +8,13 @@
     "static/js/2.2ae3e1cd.chunk.js": "/instagram-posts-comparing/static/js/2.2ae3e1cd.chunk.js",
     "static/js/2.2ae3e1cd.chunk.js.map": "/instagram-posts-comparing/static/js/2.2ae3e1cd.chunk.js.map",
     "index.html": "/instagram-posts-comparing/index.html",
-    "static/css/main.803282a8.chunk.css.map": "/instagram-posts-comparing/static/css/main.803282a8.chunk.css.map",
+    "static/css/main.53881076.chunk.css.map": "/instagram-posts-comparing/static/css/main.53881076.chunk.css.map",
     "static/js/2.2ae3e1cd.chunk.js.LICENSE.txt": "/instagram-posts-comparing/static/js/2.2ae3e1cd.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.13ff0f2b.js",
     "static/js/2.2ae3e1cd.chunk.js",
-    "static/css/main.803282a8.chunk.css",
+    "static/css/main.53881076.chunk.css",
     "static/js/main.b02aba95.chunk.js"
   ]
 }
