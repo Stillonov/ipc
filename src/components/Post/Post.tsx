@@ -3,17 +3,37 @@ import { useDebouncedFn } from 'beautiful-react-hooks';
 import { IPostInfo, IThumbnail } from '../../interfaces';
 import styles from './Post.module.css';
 
-const getPost = async (postUrl: string) => {
-    const response = await fetch(
-        `https://graph.facebook.com/v8.0/instagram_oembed?url=${postUrl}&access_token=${process.env.REACT_APP_FB_ID}|${process.env.REACT_APP_FB_ACCESS_TOKEN}`
-    );
+const FB_ID: string = process.env.REACT_APP_FB_ID || '';
+const FB_ACCESS_TOKEN: string = process.env.REACT_APP_FB_ACCESS_TOKEN || '';
 
-    if (response.ok) {
-        return await response.json();
-    } else {
-        console.log(`Ошибка HTTP: ${response.status}`);
-    }
-};
+// const getPost = async (postUrl: string): Promise<IPostInfo> => {
+//     const response = await fetch(
+//         `https://graph.facebook.com/v8.0/instagram_oembed?url=${postUrl}&access_token=${FB_ID}|${FB_ACCESS_TOKEN}`
+//     );
+//
+//     if (response.ok) {
+//         return (await response.json()) as IPostInfo;
+//     } else {
+//         console.log(`Ошибка HTTP: ${response.status}`);
+//     }
+// };
+
+function api<T>(url: string): Promise<T> {
+    return fetch(url).then((response) => {
+        if (!response.ok) {
+            throw new Error(response.statusText);
+        }
+        return response.json<T>();
+    });
+}
+
+api<{ title: string; message: string }>('v1/posts/1')
+    .then(({ title, message }) => {
+        console.log(title, message);
+    })
+    .catch((error) => {
+        /* show error message */
+    });
 
 const Post: React.FC = () => {
     const [thumbnail, setThumbnail] = useState<IThumbnail | null>(null);
@@ -30,7 +50,7 @@ const Post: React.FC = () => {
             }
 
             getPost(url)
-                .then((postInfo: IPostInfo) => {
+                .then((postInfo) => {
                     setError(false);
 
                     setThumbnail({
