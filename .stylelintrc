@@ -1,0 +1,7 @@
+{
+    "extends": "stylelint-config-sh",
+    "plugins": [
+        "stylelint-scss"
+    ],
+    "rules": {}
+}

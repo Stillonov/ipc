@@ -19,64 +19,65 @@ const Post: React.FC = () => {
     const [thumbnail, setThumbnail] = useState<IThumbnail | null>(null);
     const [error, setError] = useState(false);
 
-    const handleChange = useDebouncedFn((event: React.ChangeEvent<HTMLInputElement>) => {
-        const url = event.target.value;
+    const handleChange = useDebouncedFn(
+        (event: React.ChangeEvent<HTMLInputElement>) => {
+            const url = event.target.value;
 
-        if (!url || !url.trim()) {
-            setThumbnail(null);
+            if (!url || !url.trim()) {
+                setThumbnail(null);
 
-            return;
-        }
+                return;
+            }
 
-        getPost(url)
-            .then((postInfo:IPostInfo) => {
-                setError(false);
+            getPost(url)
+                .then((postInfo: IPostInfo) => {
+                    setError(false);
 
-                setThumbnail({
-                    width: postInfo.thumbnail_width,
-                    height: postInfo.thumbnail_height,
-                    url: postInfo.thumbnail_url,
+                    setThumbnail({
+                        width: postInfo.thumbnail_width,
+                        height: postInfo.thumbnail_height,
+                        url: postInfo.thumbnail_url,
+                    });
+                })
+                .catch(() => {
+                    setError(true);
                 });
-            })
-            .catch(() => {
-                setError(true);
-            });
-    }, 300);
+        },
+        300
+    );
 
     return (
         <div className={styles.Post}>
             <div className={styles.PostHeader}>
                 <input
-                    className={`${styles.PostTextField} ${(error) ? styles.PostTextFieldError : ''}`}
+                    className={`${styles.PostTextField} ${
+                        error ? styles.PostTextFieldError : ''
+                    }`}
                     name="url"
                     placeholder="Insert the Instagram post link"
                     onChange={handleChange}
                 />
 
-                {
-                    !error &&
-                    thumbnail &&
-                    thumbnail.width &&
-                    thumbnail.height && (
-                        <div className={styles.PostMeta}>
-                            <p>
-                                size: {thumbnail.width} x {thumbnail.height}
-                            </p>
-                            <p>
-                                ratio: {(thumbnail.width / thumbnail.height).toFixed(3)}
-                            </p>
-                        </div>
-                    )
-                }
+                {!error && thumbnail && thumbnail.width && thumbnail.height && (
+                    <div className={styles.PostMeta}>
+                        <p>
+                            size: {thumbnail.width} x {thumbnail.height}
+                        </p>
+                        <p>
+                            ratio:{' '}
+                            {(thumbnail.width / thumbnail.height).toFixed(3)}
+                        </p>
+                    </div>
+                )}
             </div>
 
-            {
-                !error &&
-                thumbnail &&
-                thumbnail.url && (
-                    <img alt="" className={styles.PostThumbnail} src={thumbnail.url} />
-                )
-            }
+            {!error && thumbnail && thumbnail.url && (
+                <img
+                    alt=""
+                    className={styles.PostThumbnail}
+                    src={thumbnail.url}
+                />
+            )}
         </div>
     );
 };
