@@ -1,18 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDebouncedFn } from 'beautiful-react-hooks';
+import { IPostInfo, IThumbnail } from '../../interfaces';
 import styles from './Post.module.css';
-
-interface IThumbnail {
-    width: number,
-    height: number,
-    url: string,
-}
-
-interface IPostInfo {
-    thumbnail_width: number,
-    thumbnail_height: number,
-    thumbnail_url: string,
-}
 
 const getPost = async (postUrl: string) => {
     const response = await fetch(
@@ -29,6 +18,7 @@ const getPost = async (postUrl: string) => {
 const Post: React.FC = () => {
     const [url, setUrl] = useState('');
     const [thumbnail, setThumbnail] = useState<IThumbnail | null>(null);
+    const [error, setError] = useState(false);
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setUrl(event.target.value);
@@ -40,41 +30,45 @@ const Post: React.FC = () => {
                 return;
             }
 
-            getPost(url).then((postInfo:IPostInfo) => {
-                setThumbnail({
-                    width: postInfo.thumbnail_width,
-                    height: postInfo.thumbnail_height,
-                    url: postInfo.thumbnail_url,
+            getPost(url)
+                .then((postInfo:IPostInfo) => {
+                    setError(false);
+
+                    setThumbnail({
+                        width: postInfo.thumbnail_width,
+                        height: postInfo.thumbnail_height,
+                        url: postInfo.thumbnail_url,
+                    });
+                })
+                .catch(() => {
+                    setError(true);
                 });
-            });
         },
         [url]
     );
-
-    console.log(thumbnail);
 
     return (
         <div className={styles.Post}>
             <div className={styles.PostHeader}>
                 <input
-                    className={styles.PostTextField}
+                    className={`${styles.PostTextField} ${(error) ? styles.PostTextFieldError : ''}`}
                     name="url"
                     placeholder="Insert the Instagram post link"
                     value={url}
                     onChange={handleChange}
-                    onBlur={handleChange}
                 />
 
                 {
+                    !error &&
                     thumbnail &&
                     thumbnail.width &&
                     thumbnail.height && (
                         <div className={styles.PostMeta}>
                             <p>
-                                размеры фото: {thumbnail.width} x {thumbnail.height}
+                                size: {thumbnail.width} x {thumbnail.height}
                             </p>
                             <p>
-                                соотношение сторон фото: {(thumbnail.width / thumbnail.height).toFixed(3)}
+                                ratio: {(thumbnail.width / thumbnail.height).toFixed(3)}
                             </p>
                         </div>
                     )
@@ -82,6 +76,7 @@ const Post: React.FC = () => {
             </div>
 
             {
+                !error &&
                 thumbnail &&
                 thumbnail.url && (
                     <img alt="" className={styles.PostThumbnail} src={thumbnail.url} />
