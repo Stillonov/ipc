@@ -4,7 +4,7 @@
     text-align: center;
 }
 
-@media (min-width: 1100px) {
+@media (min-width: 1025px) {
     .App {
         padding: 28px;
     }
@@ -26,7 +26,7 @@
     min-height: 100px;
 }
 
-@media (min-width: 1100px) {
+@media (min-width: 1025px) {
     .AppPosts {
         flex-direction: row;
         align-items: flex-start;

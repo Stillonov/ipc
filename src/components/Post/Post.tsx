@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useDebouncedFn } from 'beautiful-react-hooks';
 import { IPostInfo, IThumbnail } from '../../interfaces';
 import styles from './Post.module.css';
