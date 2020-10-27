@@ -16,36 +16,32 @@ const getPost = async (postUrl: string) => {
 };
 
 const Post: React.FC = () => {
-    const [url, setUrl] = useState('');
     const [thumbnail, setThumbnail] = useState<IThumbnail | null>(null);
     const [error, setError] = useState(false);
 
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setUrl(event.target.value);
-    };
+    const handleChange = useDebouncedFn((event: React.ChangeEvent<HTMLInputElement>) => {
+        const url = event.target.value;
 
-    useEffect(
-        () => {
-            if (!url || !url.trim()) {
-                return;
-            }
+        if (!url || !url.trim()) {
+            setThumbnail(null);
 
-            getPost(url)
-                .then((postInfo:IPostInfo) => {
-                    setError(false);
+            return;
+        }
 
-                    setThumbnail({
-                        width: postInfo.thumbnail_width,
-                        height: postInfo.thumbnail_height,
-                        url: postInfo.thumbnail_url,
-                    });
-                })
-                .catch(() => {
-                    setError(true);
+        getPost(url)
+            .then((postInfo:IPostInfo) => {
+                setError(false);
+
+                setThumbnail({
+                    width: postInfo.thumbnail_width,
+                    height: postInfo.thumbnail_height,
+                    url: postInfo.thumbnail_url,
                 });
-        },
-        [url]
-    );
+            })
+            .catch(() => {
+                setError(true);
+            });
+    }, 300);
 
     return (
         <div className={styles.Post}>
@@ -54,7 +50,6 @@ const Post: React.FC = () => {
                     className={`${styles.PostTextField} ${(error) ? styles.PostTextFieldError : ''}`}
                     name="url"
                     placeholder="Insert the Instagram post link"
-                    value={url}
                     onChange={handleChange}
                 />
 

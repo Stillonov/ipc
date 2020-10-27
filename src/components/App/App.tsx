@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './App.module.css';
-import Post from '../components/Post/Post';
+import Post from '../Post/Post';
 
 const App: React.FC = () => (
     <div className={styles.App}>
