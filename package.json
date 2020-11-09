@@ -1,8 +1,14 @@
 {
   "name": "instagram-posts-comparing",
   "version": "0.1.0",
-  "private": true,
+  "description": "",
   "homepage": "http://gitname.github.io/instagram-posts-comparing",
+  "author": "Stillonov",
+  "license": "MIT",
+  "engines": {
+    "node": ">=10"
+  },
+  "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.5",
     "@testing-library/react": "^11.1.0",
@@ -65,12 +71,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "description": "",
-  "author": "SmartHead (https://smarthead.ru)",
-  "license": "MIT",
-  "engines": {
-    "node": ">=10"
   },
   "husky": {
     "hooks": {
