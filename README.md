@@ -1,1 +1,1 @@
-# Instagram. Posts Comparing
+# Instagram Posts Comparing
