@@ -1,7 +1,5 @@
 name: Lint
 
-on: push
-
 jobs:
   run-linters:
     name: Run linters
