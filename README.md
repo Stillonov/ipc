@@ -1,4 +1,4 @@
 # Instagram Posts Comparing
 
 **Technologies**  
-* React
+* React (CRA)
