@@ -21,7 +21,7 @@ const Post: React.FC = () => {
             }
 
             const response: Response = await fetch(
-                `https://graph.facebook.com/v8.0/instagram_oembed?url=${url}&access_token=${FB_ID}|${FB_ACCESS_TOKEN}`
+                `https://graph.facebook.com/v11.0/instagram_oembed?url=${url}&access_token=${FB_ID}|${FB_ACCESS_TOKEN}`
             );
 
             if (response.ok) {

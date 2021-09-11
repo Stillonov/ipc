@@ -65,7 +65,7 @@
     ]
   },
   "description": "",
-  "author": "SmartHead (https://smarthead.ru)",
+  "author": "Stillonov",
   "license": "MIT",
   "engines": {
     "node": ">=10"
