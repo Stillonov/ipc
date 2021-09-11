@@ -13,6 +13,13 @@ const App: React.FC = () => (
             <Post />
             <Post />
         </div>
+
+        <a
+            style={{ fontSize: '10px' }}
+            href="https://docs.google.com/document/d/1KrqDaQNU9ZvoT88afqbMWC-XwDl_h9jN7L1DVVlI2oU/edit?usp=sharing"
+        >
+            Privacy Policy
+        </a>
     </div>
 );
 
